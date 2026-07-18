@@ -1,6 +1,5 @@
 // what is Event loop?
 
-// Definition:
 // Event Loop ek continuously chalne wala mechanism hai jiska kaam Call Stack 
 // aur Callback Queue ko monitor karna hota hai. 
 

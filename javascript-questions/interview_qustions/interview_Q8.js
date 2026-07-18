@@ -2,11 +2,10 @@
 
 // let
 // 1. Iski value ko hum baad me reassign (change) kar sakte hain.
-// 2. Isko bina kisi value ke sirf declare karke chhod sakte hain.
 
 // const (Constant)
 // 1. Iski value ek baar assign hone ke baad reassign (change) nahi ho sakti.
-// 2. Isko declare karte waqt hi value dena compulsory (zaroori) hai.
+
 
 
 let age = 21;
