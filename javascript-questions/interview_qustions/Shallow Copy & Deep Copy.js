@@ -1,3 +1,5 @@
+// difference B/W Shallow Copy & Deep Copy
+
 const obj1 = {test : "karan"};
 const obj2 = obj1;
 obj2.test = "bisht" 
