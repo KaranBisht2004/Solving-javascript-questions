@@ -7,3 +7,4 @@
 //3 - SyntaxError
 
 //4 - RangeError 
+
