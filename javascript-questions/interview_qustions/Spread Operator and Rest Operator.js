@@ -24,6 +24,17 @@ console.log(updatedProject);
 // 2. Rest Operator 
 // Yeh tab kaam aata hai jab tumhare paas bohot saara bikhra hua data aa raha ho (jaise function ke arguments) aur tum un sabko samet kar ek single array mein band karna chahte ho.
 
+
+const sum = (...a) => {
+   let sum = 0;
+   for(const item of a){
+    sum += item
+   }
+   return sum
+}
+consolelog(sum(5,5,5,5,5,5))
+
+
 const sumAll = (...numbers) => {
     return numbers.reduce((total, num) => total + num, 0);
 }
