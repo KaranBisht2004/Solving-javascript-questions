@@ -139,7 +139,7 @@ const factorNumbers = (nums) => {
         }
     }
 
-    return [...factors,nums]
+    return [...factors, nums]
 }
 console.log(factorNumbers(num));
 
@@ -148,12 +148,12 @@ console.log(factorNumbers(num));
 
 let number = 50;
 
-const primeNumer = (num) =>{
+const primeNumer = (num) => {
 
-    let primeNumer  = true;
+    let primeNumer = true;
 
-    for(let i  =2 ; i < Math.floor(num/2); i++ ){
-        if(num % i === 0){
+    for (let i = 2; i < Math.floor(num / 2); i++) {
+        if (num % i === 0) {
             primeNumer = false;
             break
         }
@@ -169,14 +169,48 @@ let num = 1234;
 
 const sumFunction = (num) => {
     let sum = 0;
-    
-    while(num>0){
-    let reminder = num % 10;
-    sum+= reminder;
-    num = Math.floor(num/10)    
+
+    while (num > 0) {
+        let reminder = num % 10;
+        sum += reminder;
+        num = Math.floor(num / 10)
     }
 
     return sum
 }
 
 console.log(sumFunction(num));
+
+
+// Q10 Stronge Number
+
+let number = 12;
+
+const strongeNumber = (num) => {
+
+    let sum = 0;
+    let copyNumber = num;
+
+    while (num > 0) {
+        let rem = num % 10;
+
+        let fact = 1;
+        for (let i = 1; i <= rem; i++) {
+            fact *= i
+        }
+
+        sum += fact
+        num = Math.floor(num / 10);
+
+    }
+    if (copyNumber === sum) {
+        return `${copyNumber} is a Strong Number`;
+    }
+    else {
+        return `${copyNumber} is NOT a Strong Number`;
+    }
+}
+console.log(strongeNumber(number));
+
+
+

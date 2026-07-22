@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+<h1>Guess the number</h1>
+    <script>
+
+        let random = Math.floor(Math.random() * 100) + 1; // 1 to 100
+        let attempted = 0;
+
+        while (true) {
+            let input = prompt("Guess the number between 1 and 100:");
+
+            if (input === null) {
+                console.log("Game cancelled!");
+                break;
+            }
+
+            let guess = Number(input);
+
+            if (isNaN(guess) || input.trim() === "") {
+                console.log("Please enter a valid number!");
+                continue;
+            }
+
+            attempted++;
+            if (guess > random) {
+                console.log(`Too High! 📈 (Attempt #${attempted}: ${guess})`);
+            } else if (guess < random) {
+                console.log(`Too Low! 📉 (Attempt #${attempted}: ${guess})`);
+            } else {
+                console.log(`Congo! 🎉 You guessed the correct number: ${random}`);
+                console.log(`Total Attempts = ${attempted}`);
+                break;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
