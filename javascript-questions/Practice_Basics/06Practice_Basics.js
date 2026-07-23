@@ -214,3 +214,132 @@ console.log(strongeNumber(number));
 
 
 
+//Q11 sum of n element of array
+
+let arr = [1, 2, 3, 4, 5, 6]
+
+const sum = (nums) => {
+
+    let sum = 0;
+
+    for (const value of nums) {
+        sum += value;
+    }
+
+    return sum
+}
+console.log(sum(arr));
+
+
+//Q12 Find largest Number 
+
+let arr = [1, 2, 3, 4, 5, 6];
+
+const findLargest = () => {
+
+    let largestNUM = arr[0];
+
+    for (const value of arr) {
+        if (largestNUM < value) {
+            largestNUM = value
+        }
+    }
+
+    return largestNUM
+}
+
+console.log(findLargest(arr));
+
+
+
+//Q13 Find smallest Number
+
+let arr = [1, 2, 3, 4, -5, 6];
+
+const findSmallest = (num) => {
+
+    let smallest = num[0];
+
+    for (const value of num) {
+        if (smallest > value) {
+            smallest = value
+        }
+    }
+
+    return smallest
+}
+
+console.log(findSmallest(arr));
+
+
+//Q14 Find Second  largest Number 
+
+let arr = [10, 20, 30, 40, -50, 60];
+
+const secondLargestNumber = (num) => {
+
+    let largest = num[0];
+    let secondLargest = num[1];
+
+    for (let i = 2; i < num.length; i++) {
+        if (num[i] > largest) {
+            secondLargest = largest;
+            largest = num[i]
+        }
+        else if (num[i] > secondLargest && num[i] !== largest) {
+            secondLargest = num[i]
+        }
+    }
+    return { largest, secondLargest }
+}
+
+console.log(secondLargestNumber(arr));
+
+
+
+//Q15 Find Second Smallest Number 
+
+let arr = [10, 20, 30, 40, -50, 60];
+
+const findSecondSmallest = (num) => {
+
+    let smallestNum = num[0];
+    let secondSmallestNum = num[1];
+
+    for (let i = 2; i < num.length; i++) {
+        if (smallestNum > num[i]) {
+            secondSmallestNum = smallestNum;
+            smallestNum = num[i]
+        }
+        else if (num[i] < secondSmallestNum && num[i] !== smallestNum) {
+            secondSmallestNum = num[i]
+        }
+    }
+
+    return { smallestNum, secondSmallestNum }
+
+}
+
+console.log(findSecondSmallest(arr));
+
+
+
+//Q16 Revers Array With Exter Space 
+
+let arr = [1, 2, 3, 4, 5, 6];
+
+const reversArr = (num) => {
+
+    let revers = [];
+
+    for(let i = num.length-1 ; i>=0 ; i--){
+        revers.push(num[i])
+    }
+
+    return revers
+}
+
+console.log(reversArr(arr));
+
+
+
