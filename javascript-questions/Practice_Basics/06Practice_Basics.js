@@ -332,7 +332,7 @@ const reversArr = (num) => {
 
     let revers = [];
 
-    for(let i = num.length-1 ; i>=0 ; i--){
+    for (let i = num.length - 1; i >= 0; i--) {
         revers.push(num[i])
     }
 
@@ -343,3 +343,233 @@ console.log(reversArr(arr));
 
 
 
+//Q17 Revers Array With No Exter Space 
+
+let arr = [1, 2, 3, 4, 5, 6];
+
+const revers = (num) => {
+
+    let i = 0;
+    let j = num.length - 1;
+
+    while (i < j) {
+        [num[i], num[j]] = [num[j], num[i]]
+        j--
+        i++
+    }
+    return num
+}
+
+console.log(revers(arr));
+
+
+//Q18  Move Zeroes to Right
+
+let arr = [0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0];
+
+const moveZero = (num) => {
+
+    let j = 0;
+
+    for (let i = 0; i < num.length; i++) {
+
+        if (num[i] == 0) {
+
+            [num[i], num[j]] = [num[j], num[i]]
+
+            j++
+        }
+    }
+
+    return num
+}
+
+console.log(moveZero(arr));
+
+
+// Q19. Move All Negatives to Left
+
+let arr = [-12, 11, -13, -5, 6, -7, 5, -3, 6]
+
+const negativeMove = (num) => {
+
+    let j = 0;
+
+    for (let i = 0; i < num.length; i++) {
+        if (num[i] < 0) {
+            [num[i], num[j]] = [num[j], num[i]]
+            j++
+        }
+    }
+
+    return num
+}
+
+console.log(negativeMove(arr));
+
+
+//Q20. Left Rotate Array by 1 Position
+
+let arr = [1, 2, 3, 4, 5, 6, 7]
+
+const leftRotation = (num) => {
+
+    let ele1 = num[0];
+
+    for (let i = 0; i < num.length - 1; i++) {
+        num[i] = num[i + 1];
+    }
+    num[num.length - 1] = ele1
+
+    return num
+}
+
+console.log(leftRotation(arr));
+
+
+
+//Q21. Right Rotate Array by 1 Position
+
+let arr = [1, 2, 3, 4, 5];
+
+const rightRotation = (num) => {
+
+    let lastEle = num[num.length - 1];
+
+    for (i = num.length - 1; i > 0; i--) {
+        num[i] = num[i - 1]
+    }
+
+    num[0] = lastEle
+
+    return num
+}
+
+console.log(rightRotation(arr));
+
+// Q22. Left Rotate Array by K Positions 
+
+let arr = [1, 2, 3, 4, 5, 6, 7],
+
+const leftRotationbyK = (num) => {
+
+    let k = 3;
+    k = k % num.length
+
+    for (let i = 0; i < k; i++) {
+        let ele1 = num[0];
+
+        for (let j = 0; j < num.length - 1; j++) {
+            num[j] = num[j + 1]
+        }
+        num[num.length - 1] = ele1
+    }
+
+    return num
+}
+console.log(leftRotationbyK(arr));
+
+
+// Q23. Right Rotate Array by K Positions 
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+const rightRotateByK = (num) => {
+
+    let k = 3;
+    k = k % num.length;
+
+    for (let i = 0; i < k; i++) {
+
+        let lastElement = num[num.length - 1];
+
+        for (let j = num.length - 1; j > 0; j--) {
+            num[j] = num[j - 1]
+        }
+        num[0] = lastElement;
+    }
+    return num
+}
+console.log(rightRotateByK(arr));
+
+
+// Q23. Left Rotate Array by K Positions (useing Exter Space)
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+const leftRotatebByK = (num, k) => {
+
+    let temp = Array(num.length);
+    k = k % num.length;
+
+    for(let i = 0; i < num.length ; i++){
+        temp[i] = num[(i + k) % num.length]
+    }
+    return temp
+}
+console.log(leftRotatebByK(arr, 3));
+
+
+// Q24. Right Rotate Array by K Positions (useing Exter Space)
+
+let arr = [1,2,3,4,5,6,7];
+
+const rightRotateByK = (num , k) => {
+
+    let temp = Array(num.length);
+    k = k % num.length;
+
+    for(let i = num.length-1 ; i >= 0 ; i--){
+       temp[(i + k) % num.length] = num[i];
+    }
+
+    return temp
+}
+
+console.log(rightRotateByK(arr , 3));
+
+
+//Q25. Remove Duplicates from Sorted Array
+
+let arr = [1, 1, 2, 2, 3, 4, 4];
+
+const removeDulicates = (num) => {
+
+    let j = 1;
+
+    for(let i = 0; i < num.length-1 ; i++){
+        if(num[i] !== num[i + 1]){
+            num[j] = num[i + 1]
+            j++
+        }
+    }
+    num.length = j;
+    return num
+}
+
+console.log(removeDulicates(arr));
+
+
+// Q26. Merge Two Sorted Arrays In-Place
+
+let arr1 = [1, 3, 5, 0, 0, 0] //m = 3
+let arr2 = [2, 4, 6]
+
+const mergeSortedArr = (num1 , num2) => {
+
+    let temp = Array(Math.max(num1.length , num2.length))
+
+    for(let i = 0 ; i< temp.length; i++){
+        if(num1[i] > num2[i]){
+            temp[i] = num2[i]
+        }
+       else if(num1[i] < num2[i]){
+            temp[i] = num1[i]
+        }
+    }
+
+    return temp
+
+}
+
+console.log(mergeSortedArr(arr1,arr2));
