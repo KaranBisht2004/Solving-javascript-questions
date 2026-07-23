@@ -550,26 +550,26 @@ const removeDulicates = (num) => {
 console.log(removeDulicates(arr));
 
 
-// Q26. Merge Two Sorted Arrays In-Place
+// // Q26. Merge Two Sorted Arrays In-Place
 
-let arr1 = [1, 3, 5, 0, 0, 0] //m = 3
-let arr2 = [2, 4, 6]
+// let arr1 = [1, 3, 5, 0, 0, 0] //m = 3
+// let arr2 = [2, 4, 6]
 
-const mergeSortedArr = (num1 , num2) => {
+// const mergeSortedArr = (num1 , num2) => {
 
-    let temp = Array(Math.max(num1.length , num2.length))
+//     let temp = Array(Math.max(num1.length , num2.length))
 
-    for(let i = 0 ; i< temp.length; i++){
-        if(num1[i] > num2[i]){
-            temp[i] = num2[i]
-        }
-       else if(num1[i] < num2[i]){
-            temp[i] = num1[i]
-        }
-    }
+//     for(let i = 0 ; i< temp.length; i++){
+//         if(num1[i] > num2[i]){
+//             temp[i] = num2[i]
+//         }
+//        else if(num1[i] < num2[i]){
+//             temp[i] = num1[i]
+//         }
+//     }
 
-    return temp
+//     return temp
 
-}
+// }
 
-console.log(mergeSortedArr(arr1,arr2));
+// console.log(mergeSortedArr(arr1,arr2));
