@@ -502,7 +502,7 @@ const leftRotatebByK = (num, k) => {
     let temp = Array(num.length);
     k = k % num.length;
 
-    for(let i = 0; i < num.length ; i++){
+    for (let i = 0; i < num.length; i++) {
         temp[i] = num[(i + k) % num.length]
     }
     return temp
@@ -512,21 +512,21 @@ console.log(leftRotatebByK(arr, 3));
 
 // Q24. Right Rotate Array by K Positions (useing Exter Space)
 
-let arr = [1,2,3,4,5,6,7];
+let arr = [1, 2, 3, 4, 5, 6, 7];
 
-const rightRotateByK = (num , k) => {
+const rightRotateByK = (num, k) => {
 
     let temp = Array(num.length);
     k = k % num.length;
 
-    for(let i = num.length-1 ; i >= 0 ; i--){
-       temp[(i + k) % num.length] = num[i];
+    for (let i = num.length - 1; i >= 0; i--) {
+        temp[(i + k) % num.length] = num[i];
     }
 
     return temp
 }
 
-console.log(rightRotateByK(arr , 3));
+console.log(rightRotateByK(arr, 3));
 
 
 //Q25. Remove Duplicates from Sorted Array
@@ -537,8 +537,8 @@ const removeDulicates = (num) => {
 
     let j = 1;
 
-    for(let i = 0; i < num.length-1 ; i++){
-        if(num[i] !== num[i + 1]){
+    for (let i = 0; i < num.length - 1; i++) {
+        if (num[i] !== num[i + 1]) {
             num[j] = num[i + 1]
             j++
         }
@@ -550,26 +550,115 @@ const removeDulicates = (num) => {
 console.log(removeDulicates(arr));
 
 
-// // Q26. Merge Two Sorted Arrays In-Place
+// Q26 Sort Element with  Bubble Sort
 
-// let arr1 = [1, 3, 5, 0, 0, 0] //m = 3
-// let arr2 = [2, 4, 6]
+let arr = [64, 34, 25, 12, 22, 11, 90];
 
-// const mergeSortedArr = (num1 , num2) => {
+const bubbleSort = (num) => {
 
-//     let temp = Array(Math.max(num1.length , num2.length))
+    for (let i = 0; i < num.length; i++) {
 
-//     for(let i = 0 ; i< temp.length; i++){
-//         if(num1[i] > num2[i]){
-//             temp[i] = num2[i]
-//         }
-//        else if(num1[i] < num2[i]){
-//             temp[i] = num1[i]
-//         }
-//     }
+        for (let j = 0; j < num.length - 1; j++) {
 
-//     return temp
+            if (num[j] > num[j + 1]) {
 
-// }
+                [num[j], num[j + 1]] = [num[j + 1], num[j]]
+            }
+        }
+    }
 
-// console.log(mergeSortedArr(arr1,arr2));
+    return num;
+}
+
+console.log(bubbleSort(arr));
+
+
+
+// Q27  Reverse Sorted Array 
+
+let arr2 = [50, 40, 30, 20, 10];
+
+const reverseSortedArray = (nums) => {
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < nums.length - 1; j++) {
+            if (nums[j] > nums[j + 1]) {
+                [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]]
+            }
+        }
+    }
+    return nums
+}
+console.log(reverseSortedArray(arr2));
+
+
+//Q28. Duplicate Elements 
+
+let arr3 = [5, 2, 8, 2, 9, 1, 5];
+
+const duplicateElements = (nums) => {
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < nums.length - 1; j++) {
+            if (nums[j] >= nums[j + 1]) {
+                [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]]
+            }
+        }
+    }
+    return nums
+
+}
+console.log(duplicateElements(arr3));
+
+
+//Q29. Negative Numbers 
+let arr4 = [3, -2, 0, 7, -5, 1];
+
+const negativeSort = (nums) => {
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < nums.length - 1; j++) {
+            if (nums[j] > nums[j + 1]) {
+                [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]]
+            }
+        }
+    }
+    return nums
+}
+console.log(negativeSort(arr4));
+
+
+//Q30 Merge Sorted Arrays
+
+let arr1 = [1, 3, 5, 7]
+let arr2 = [2, 4, 6, 8]
+
+const mergeSortedArr = (num1, num2) => {
+
+    let result = []
+
+    let i = 0
+    let j = 0
+
+    while (i < num1.length && j < num2.length) {
+        if (num1[i] < num2[j]) {
+            result.push(num1[i])
+            i++
+        }
+        else {
+            result.push(num2[j])
+            j++
+        }
+    }
+    while (i < num1.length) {
+        result.push(num1[i])
+        i++
+    }
+
+    while (j < num2.length) {
+        result.push(num2[j])
+        j++
+    }
+    return result
+}
+console.log(mergeSortedArr(arr1, arr2));
