@@ -7,12 +7,15 @@
 // Ye value aur datatype (type) dono ko check karta hai, bina kisi conversion ke.
 
 
+// Because Object is a Non-Primitive Data Type (Reference Type), 
+// it compares by Memory Location. That's why both are false:
 console.log({} == {});
 console.log({} === {});
 
-
-console.log([] == []);
-console.log([] === []);
+// Because array is a Non-Primitive Data Type (Reference Type), 
+// it compares by Memory Location. That's why both are false:
+console.log([] == []);  // false
+console.log([] === []); // false
 
 
 
