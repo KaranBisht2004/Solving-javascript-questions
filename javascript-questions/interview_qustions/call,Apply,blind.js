@@ -1,22 +1,28 @@
-const person = { name: "Karan" };
+// call apply & bind
 
-function greet(greeting, punctuation) {
-  console.log(`${greeting}, I'm ${this.name}${punctuation}`);
+//Yeh teeno JavaScript this keyword ki value ko manually control karne ke liye use hote hain.
+
+//call
+// 1.call main Arguments COMA (,) se separated hota hai, Function TURENT RUN hota hai.
+let obj = {
+  name: "karan",
+  age: 20,
+}
+function abcd(city, country) {
+  console.log(`${this.name} is ${this.age} years old from ${city}, ${country}.`)
 }
 
-// 1. call: Single values bhejta hai, TURANT execute hota hai
-greet.call(person, "Hello", "!"); // Hello, I'm Karan!
+abcd.call(obj , "Delhi", "India")
 
-// 2. apply: Array mai values bhejta hai, TURANT execute hota hai
-greet.apply(person, ["Hello", "!"]); // Hello, I'm Karan!
 
-// 3. bind: Immediate execute NAHI hota, ek NAYA FUNCTION return karta hai (baad mai chalaney ke liye)
-const greetLater = greet.bind(person, "Hello", "!");
-greetLater(); // Hello, I'm Karan!
+//apply
+// 2.apply(): Arguments ARRAY [] me pass hote hain. Function TURENT RUN hota hai.
+abcd.apply(obj, ["Delhi", "India"])
 
-/* 
-  SHORT SUMMARY:
-  - call  --> Direct arguments (commas) + Turant chalega
-  - apply --> Array arguments ([ ])     + Turant chalega
-  - bind  --> Direct arguments (commas) + Naya function dega (Baad mai chalao)
-*/
+
+// bind
+// 3.bind(): Function ko TURENT RUN NAHI KARTA, balki ek NAYA FUNCTION RETURN karta hai.
+// Isko aap baad me kabhi bhi call kar sakte ho.
+
+const newfunc = abcd.bind(obj , "Delhi" , "India")
+newfunc();
