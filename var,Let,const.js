@@ -67,3 +67,16 @@ console.log(arr);
 const x = 5;
 x = 10;
 console.log(x);// error const change ni kar skte
+
+
+
+
+let a = 10;
+function check() {
+  if (true) {
+    var a = 20;
+    console.log(a);
+  }
+}
+
+check();
