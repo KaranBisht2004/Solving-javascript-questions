@@ -1,4 +1,4 @@
 // What is an event listener?
 
-//An event listener is a method that waits for a specific event, like a click, input, or keypress, and executes a function when that event occurs.
-
+// Event listener waits for an event (like click, scroll, input, etc.) 
+// and executes a function when the event triggers.
