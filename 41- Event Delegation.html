@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event -- Delegation</title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: ui-sans-serif, system-ui;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c3c2c3;
+    transition: background-color 300ms ease;
+  }
+
+  #parent {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 0 20px;
+  }
+
+  .btn {
+    font-size: 20px;
+    padding: 16px 32px;
+    outline: none;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    color: rgb(2, 2, 2);
+    cursor: pointer;
+    transition: all ease-in-out 300ms;
+  }
+
+  #child1 {
+    background-color: #7C50FB;
+  }
+
+  #child2 {
+    background-color: #d3422c;
+  }
+
+  #child3 {
+    background-color: #3cd12f;
+  }
+
+  #child1:hover {
+    background-color: #4827ab;
+    color: rgb(39, 39, 39);
+    transform: translateY(-2px);
+  }
+
+  #child2:hover {
+    background-color: #ab2727;
+    color: rgb(39, 39, 39);
+    transform: translateY(-2px);
+  }
+
+  #child3:hover {
+    background-color: #36ab27;
+    color: rgb(39, 39, 39);
+    transform: translateY(-2px);
+  }
+</style>
+</head>
+
+<body>
+
+  <div id="parent">
+    <button class="btn" id="child1">Button 1</button>
+    <button class="btn" id="child2">Button 2</button>
+    <button class="btn" id="child3">Button 3</button>
+  </div>
+
+
+  <script>
+
+    // Whats is Event Delegation?
+
+    // Event Delegation means instead of adding multiple event listeners to individual child elements,
+    // we add a single event listener to their common parent element and handle the events using Event Bubbling.
+
+    const body = document.body;
+    const parent = document.getElementById("parent");
+
+    parent.addEventListener('click', (e) => {
+      if (e.target.classList.contains('btn')) {
+        // 1. Both Current Colors ko Get karo
+        const currentBtnColor = window.getComputedStyle(e.target).backgroundColor;
+        const currentBodyColor = window.getComputedStyle(body).backgroundColor;
+
+        body.style.backgroundColor = currentBtnColor;
+        e.target.style.backgroundColor = currentBodyColor;
+      }
+    });
+  </script>
+</body>
+
+</html>
