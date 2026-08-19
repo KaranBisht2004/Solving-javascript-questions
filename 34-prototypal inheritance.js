@@ -1,7 +1,10 @@
 // How does prototypal inheritance work?
 
-//JavaScript mein har object ke paas ek hidden [[Prototype]] reference hota hai. Jab hum kisi variable ya method ko access karte hain aur wo local object par nahi milta, toh JS engine use Prototype Chain follow karke parent object se dhoondta hai. Isi ko Prototypal Inheritance kehte hain.
+// Prototypal Inheritance ka matlab hai ki JS mein har object ke paas ek hidden internal property hoti hai jise Prototype kehte hain.
 
+// Jab bhi hum kisi object ki property ya method ko access karte hain, toh JS engine pehle use local object mein dhoondhta hai. Agar wahan nahi milta, toh wo prototype chain ke dwara parent object mein search karta hai.
+
+// Isi mechanism ka use karke ek object dusre object ki properties aur methods ko inherit/access kar sakta hai.
 
 const parent1 = {
   message1: "Hello from parent1",
