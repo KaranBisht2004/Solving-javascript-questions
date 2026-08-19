@@ -13,10 +13,9 @@
 // - Ise 'new' keyword ke sath use nahi kiya ja sakta (error de dega).
 
 
-
 const user = {
-  name: "Karan",
-  
+    name: "Karan",
+    
   // Normal Function
   sayHello: function() {
     console.log("Normal:", this.name); 
