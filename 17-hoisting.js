@@ -1,8 +1,8 @@
 // What is hoisting?
 
-// Hoisting is JavaScript’s behavior where declarations are processed before the code is executed, which allows us to use function declarations before they are defined.
 
-
+// Hoisting is when you access a variable before its declaration.
+// It helps to execute functions before their declaration in the code.
 
 
 // 1. let & const: Hoisted but in TDZ (Cannot access before initialization)
