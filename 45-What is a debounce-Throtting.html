@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debouncing & Throttling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+      padding: 1rem;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 2.5rem 2rem 2.2rem;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .container:hover {
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #303031d3;
+      font-weight: 500;
+      width: fit-content;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      background: #f9f9fb;
+      border: 1.5px solid #d2d2d7;
+      border-radius: 12px;
+      color: #1d1d1f;
+      font-size: 1rem;
+      font-weight: 450;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    input[type="text"]::placeholder {
+      color: #8e8e93;
+      font-weight: 400;
+    }
+
+    input[type="text"]:focus {
+      border-color: #636363;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(168, 168, 168, 0.196);
+    }
+
+
+
+    #Throtting {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      background: #1d1d1f;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+
+    #Throtting:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Debouncing Section -->
+    <div class="section">
+      <span class="section-title">Debouncing</span>
+      <input id="DebouncingINPUT" type="text" placeholder="Debouncing........" />
+    </div>
+
+    <!-- Throttling Section -->
+    <div class="section">
+      <span class="section-title">Throttling</span>
+      <button id="Throtting">Throtting...</button>
+    </div>
+  </div>
+
+
+
+  <script>
+
+    //what is Debouncing & Throttling? 
+
+    // Debouncing & Throttling it both use for performance optimization.
+
+    // 1 - Debouncing mean jis mai function ko tab tak delay karte hai jb tk user continuous action leta hai and aager vo set - timeDelay ke ander dobara action leta hai toh set timeout reset ho jata hai and function execution cancel ho jata hai
+
+    // Debouncing--
+
+    let debouncingINPUT = document.getElementById('DebouncingINPUT');
+    let timer;
+    let count = 1;
+
+    function debouncing(Debounce, delay = 1200) {
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        console.log(`Debouncing ${count++}: ${Debounce}`);
+      }, delay)
+    }
+    debouncingINPUT.addEventListener('input', (e) => {
+      let inputValue = e.target.value.trim();
+      if (!inputValue) return;
+      debouncing(inputValue)
+    })
+
+
+    // 2- Throttling humra high frequency events ko controll karta hai ye guarantee deta hai user event kitni bar hi q na performe kar le vo ek set-time interval pe he execute hogya sirf ek bar
+
+    // Throttling
+
+    let btn = document.getElementById('Throtting');
+
+    let lastCall = 0;
+    let throtlCount = 1;
+
+    function throttling(event, delay = 1000) {
+      let now = Date.now();
+      if (now - lastCall >= delay) {
+        console.log(`Throttl Count: ${throtlCount++}`);
+        lastCall = now
+      }
+    }
+    btn.addEventListener('click', (e) => {
+      throttling()
+    })
+
+
+  </script>
+</body>
+</html>
