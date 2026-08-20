@@ -1,5 +1,3 @@
-🟢 Beginner Level
-
 // What is JavaScript?
 // What are variables in JavaScript?
 // What is the difference between var, let, and const?
@@ -23,8 +21,6 @@
 // How to check if a variable is an array?
 // How to merge two arrays?
 // How to find the length of an array or string?
-
-🟡 Intermediate Level
 // What is a closure in JavaScript?
 // What do you mean by BOM?
 // What is this keyword?
@@ -43,20 +39,9 @@
 // What is event delegation?
 // What is a memory leak in JS?
 // Difference between call(), apply(), and bind()?
-
-🔴 Advanced Level
 // What is the event loop in JavaScript?
 // What is a debounce function?
 // What is throttling in JavaScript?
 // In JavaScript, how many different methods can you make an object?
 // What is the role of deferred scripts in JavaScript?
-// What is the output/purpose of the lexical environment check function?
-// Guess the output of the nested execution scope code.
-// Explain the module pattern in JavaScript.
-// What is currying?
-// What is memoization?
-// What is the Temporal Dead Zone (TDZ)?
-// How does garbage collection work in JS?
-// What are ES6 classes?
-// What is the optional chaining (?.) operator?
 
