@@ -18,3 +18,21 @@ async function fetchData() {
 }
 
 fetchData();
+
+
+async function moviesData() {
+    try {
+        let response = await fetch('https://www.apirequest.in/api/movie');
+        if (!response.ok) {
+            throw new Error(`HTTP Error Status: ${response.status}`);
+        }
+        let data = await response.json();
+        console.log(data);
+    }
+    catch (err) {
+        console.error("Error fetching data:", err.message);
+    }
+}
+moviesData()
+
+
