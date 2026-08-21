@@ -21,3 +21,33 @@ order
     .catch((err) => {
         console.error(err);
     });
+
+
+let number = new Promise((res, rej) => {
+    let randomNumber = Math.floor(Math.random() * 10);
+    if (randomNumber > 5) {
+        res(`your number bigger then 5 => ${randomNumber}`)
+    }
+    else {
+        rej(`your number smaller then 5 => ${randomNumber}`)
+    }
+})
+
+// number.then((res)=> {// this promise 
+// console.log(res);
+// })
+// .catch((err)=>{
+//     console.log(err);
+// });
+
+
+async function abcd() { // this async await 
+    try {
+        let value = await number;
+        console.log(value);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+abcd()
