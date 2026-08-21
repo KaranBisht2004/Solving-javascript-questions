@@ -30,3 +30,18 @@ let obj2 = {
     }
 }
 obj2.greet()//hello Undefind
+
+// Global Scope:
+// this ki value global scope mai window hoti hai
+
+// Function:
+// function mai bhi window hoti hai 
+
+// Method:
+// method mai object hota hai 
+
+// Event Handler:
+// event handler mai this humesha woh hoga jis pe addEventListener laga hai
+
+// new:
+// this ki value blank {} hoti hai jab aap usse new ke sath call karte ho
