@@ -142,22 +142,39 @@
 
     // Debouncing--
 
+
     let debouncingINPUT = document.getElementById('DebouncingINPUT');
-    let timer;
-    let count = 1;
 
-    function debouncing(Debounce, delay = 1200) {
-      clearTimeout(timer);
-
-      timer = setTimeout(() => {
-        console.log(`Debouncing ${count++}: ${Debounce}`);
-      }, delay)
+    function debouncing(fnc, delay = 400) {
+      let timer;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          fnc(...args);
+        }, delay)
+      }
     }
-    debouncingINPUT.addEventListener('input', (e) => {
-      let inputValue = e.target.value.trim();
-      if (!inputValue) return;
-      debouncing(inputValue)
-    })
+
+    debouncingINPUT.addEventListener("input", debouncing(function (e) {
+      console.log(e.target.value);
+    }))
+
+    // let debouncingINPUT = document.getElementById('DebouncingINPUT');
+    // let timer;
+    // let count = 1;
+
+    // function debouncing(Debounce, delay = 1200) {
+    //   clearTimeout(timer);
+
+    //   timer = setTimeout(() => {
+    //     console.log(`Debouncing ${count++}: ${Debounce}`);
+    //   }, delay)
+    // }
+    // debouncingINPUT.addEventListener('input', (e) => {
+    //   let inputValue = e.target.value.trim();
+    //   if (!inputValue) return;
+    //   debouncing(inputValue)
+    // })
 
 
     // 2- Throttling humra high frequency events ko controll karta hai ye guarantee deta hai user event kitni bar hi q na performe kar le vo ek set-time interval pe he execute hogya sirf ek bar
@@ -166,21 +183,40 @@
 
     let btn = document.getElementById('Throtting');
 
-    let lastCall = 0;
-    let throtlCount = 1;
-
-    function throttling(event, delay = 1000) {
-      let now = Date.now();
-      if (now - lastCall >= delay) {
-        console.log(`Throttl Count: ${throtlCount++}`);
-        lastCall = now
+    function throttling(fnc, delay = 1000) {
+      let timer = 0;
+      return function (...args) {
+        let now = Date.now();
+        if (now - timer >= delay) {
+          timer = now;
+          fnc(...args)
+        }
       }
     }
-    btn.addEventListener('click', (e) => {
-      throttling()
-    })
+
+    btn.addEventListener("click",throttling(function(e){
+      console.log("yeeeee");
+    }))
+
+
+    // let btn = document.getElementById('Throtting');
+
+    // let lastCall = 0;
+    // let throtlCount = 1;
+
+    // function throttling(event, delay = 1000) {
+    //   let now = Date.now();
+    //   if (now - lastCall >= delay) {
+    //     console.log(`Throttl Count: ${throtlCount++}`);
+    //     lastCall = now
+    //   }
+    // }
+    // btn.addEventListener('click', (e) => {
+    //   throttling()
+    // })
 
 
   </script>
 </body>
+
 </html>
