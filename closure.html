@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(23, 23, 23);
+            font-family: sans-serif;
+        }
+
+        /* Button Custom CSS */
+        button {
+            padding: 12px 24px;
+            background-color: #212121;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        button:hover {
+            background-color: #2d2d2d;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Toast Base Style */
+        .toast-notification {
+            position: fixed;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            padding: 16px 32px;
+            margin: 16px;
+            border-radius: 4px;
+            pointer-events: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .pos-right {
+            right: 40px;
+        }
+
+        .pos-left {
+            left: 40px;
+        }
+
+        .pos-top {
+            top: 40px;
+        }
+
+        .pos-bottom {
+            bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>
+        <span>Make Toast...</span>
+    </button>
+
+    <script>
+        // Toast-----
+        let count = 0;
+        let btn = document.querySelector("button");
+
+        btn.addEventListener("click", (e) => {
+            let toster = createToaster({
+                postionX: 'right',
+                postionY: 'top',
+                theme: 'dark',
+                duration: 3,
+            });
+
+            toster(`this is a dummy notification ${count++}`);
+        });
+
+        function createToaster(config) {
+            return function (notification) {
+                let tosterDiv = document.createElement("div");
+
+                let posX = config.postionX === "right" ? "pos-right" : "pos-left";
+                let posY = config.postionY === "top" ? "pos-top" : "pos-bottom";
+                tosterDiv.className = `toast-notification ${posX} ${posY}`;
+
+                let activeToasts = document.querySelectorAll(".toast-notification").length;
+                let offset = activeToasts * 60;
+                tosterDiv.style.top = `${40 + offset}px`;
+
+                tosterDiv.textContent = notification;
+                document.body.appendChild(tosterDiv);
+
+                setTimeout(() => {
+                    tosterDiv.remove();
+                }, config.duration * 1000);
+            };
+        }
+
+
+
+      
+
+
+    </script>
+</body>
+
+</html>
