@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Loading</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: #1d1d1e;
+      color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 80%;
+      width: 100%;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: #9ca3af;
+    }
+
+    .spacer {
+      height: 50vh;
+    }
+
+    .lazy-img {
+      display: block;
+      width: 100%;
+      min-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      background-color: #374151;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      margin: 0 auto;
+      transition: opacity 0.6s ease; /* Transition speed readable kar di */
+    }
+
+    /* FIX: Space hataya kyuki dono class ek hi element par hain */
+    .lazy-img.loaded {
+      opacity: 1;
+    }
+
+    h1 {
+      margin: 10px;
+      padding-bottom: 10px;
+      font-size: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Lazy Loading</h1>
+    <p>Scroll down to see images load only when they enter the viewport</p>
+
+    <div class="spacer"></div>
+
+    <!-- FIX: src ki jagah data-src use kiya -->
+    <img data-src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?fm=jpg&q=60&w=3000&auto=format&fit=crop" class="lazy-img" alt="Image 1">
+
+    <div class="spacer"></div>
+
+    <img data-src="https://images.unsplash.com/photo-1537387788952-cffe9f8d3090?fm=jpg&q=60&w=3000&auto=format&fit=crop" class="lazy-img" alt="Image 2">
+
+    <div class="spacer"></div>
+
+    <img data-src="https://images.unsplash.com/photo-1691603136956-61008c61b745?fm=jpg&q=60&w=3000&auto=format&fit=crop" class="lazy-img" alt="Image 3">
+
+    <div class="spacer"></div>
+
+    <img data-src="https://images.unsplash.com/photo-1540390769625-2fc3f8b1d50c?fm=jpg&q=60&w=3000&auto=format&fit=crop" class="lazy-img" alt="Image 4">
+  </div>
+
+  <script>
+    
+    let images = document.querySelectorAll("img");
+
+    const observer = new IntersectionObserver(function (entries, observer) {
+      
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src; 
+          
+          img.onload = () => img.classList.add("loaded");
+          observer.unobserve(img); 
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+    });
+
+    
+    images.forEach((img) => {
+      observer.observe(img);
+    });
+  </script>
+</body>
+
+</html>
